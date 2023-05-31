@@ -4,16 +4,29 @@ import { Text, Card, Button, Icon } from '@rneui/themed';
 
 const users = [
     {
-        name: 'thot leader',
-        avatar:
-            'https://images.pexels.com/photos/598745/pexels-photo-598745.jpeg?crop=faces&fit=crop&h=200&w=200&auto=compress&cs=tinysrgb',
-    },
-    {
-        name: 'talhaconcepts',
+        name: 'Gym',
         avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
     },
     {
-        name: 'katy friedson',
+        name: 'Car',
+        avatar:
+            'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMTc1MTYzM15BMl5BanBnXkFtZTgwNzI5NjMwOTE@._V1_UY256_CR16,0,172,256_AL_.jpg',
+    },
+    {
+        name: 'Home',
+        avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
+    },
+    {
+        name: 'Work',
+        avatar:
+            'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMTc1MTYzM15BMl5BanBnXkFtZTgwNzI5NjMwOTE@._V1_UY256_CR16,0,172,256_AL_.jpg',
+    },
+    {
+        name: 'Family',
+        avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
+    },
+    {
+        name: 'Social',
         avatar:
             'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMTc1MTYzM15BMl5BanBnXkFtZTgwNzI5NjMwOTE@._V1_UY256_CR16,0,172,256_AL_.jpg',
     },
@@ -25,52 +38,27 @@ function Feed() {
             <ScrollView>
                 <View style={styles.container}>
                     <Card>
-                        <Card.Title>CARD WITH DIVIDER</Card.Title>
-                        <Card.Divider />
                         {users.map((u, i) => {
                             return (
-                                <View key={i} style={styles.user}>
-                                    <Image
-                                        style={styles.image}
-                                        resizeMode="cover"
-                                        source={{ uri: u.avatar }}
+                                <Card key={u.name}>
+                                    <Card.Title>{u.name}</Card.Title>
+                                    <Card.Divider />
+                                    <Card.Image
+                                        style={{ padding: 0 }}
+                                        source={{
+                                            uri:
+                                                'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
+                                        }}
                                     />
-                                    <Text style={styles.name}>{u.name}</Text>
-                                </View>
+                                    {/* <Text style={{ marginBottom: 10 }}>
+                                        The idea with React Native Elements is more about component
+                                        structure than actual design.
+                                    </Text> */}
+
+                                </Card>
+
                             );
                         })}
-                    </Card>
-                    <Card containerStyle={{ marginTop: 15 }}>
-                        <Card.Title>FONTS</Card.Title>
-                        <Card.Divider />
-                        <Text style={styles.fonts} h1>
-                            h1 Heading
-                        </Text>
-                        <Text style={styles.fonts} h2>
-                            h2 Heading
-                        </Text>
-                        <Text style={styles.fonts} h3>
-                            h3 Heading
-                        </Text>
-                        <Text style={styles.fonts} h4>
-                            h4 Heading
-                        </Text>
-                        <Text style={styles.fonts}>Normal Text</Text>
-                    </Card>
-                    <Card>
-                        <Card.Title>HELLO WORLD</Card.Title>
-                        <Card.Divider />
-                        <Card.Image
-                            style={{ padding: 0 }}
-                            source={{
-                                uri:
-                                    'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
-                            }}
-                        />
-                        <Text style={{ marginBottom: 10 }}>
-                            The idea with React Native Elements is more about component
-                            structure than actual design.
-                        </Text>
                         <Button
                             icon={
                                 <Icon
@@ -85,9 +73,11 @@ function Feed() {
                                 marginRight: 0,
                                 marginBottom: 0,
                             }}
-                            title="VIEW NOW"
+                            title="Add New"
                         />
                     </Card>
+
+
                 </View>
             </ScrollView>
         </>
@@ -97,6 +87,7 @@ function Feed() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#ecf0f1',
     },
     fonts: {
         marginBottom: 8,
