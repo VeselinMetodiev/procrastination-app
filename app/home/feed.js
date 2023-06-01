@@ -1,6 +1,7 @@
 import React from "react";
-import { View, ScrollView, StyleSheet, Image } from "react-native";
-import { Text, Card, Button, Icon } from "@rneui/themed";
+import { View, ScrollView, StyleSheet, Image, Pressable } from "react-native";
+import { Text, Button, Icon } from "@rneui/themed";
+import Card from "./../components/Card";
 
 const users = [
   {
@@ -33,26 +34,16 @@ const users = [
 ];
 
 function Feed() {
+  const handleCardPress = (card) => {
+    // Handle press event for the card
+    console.log("Pressed card:", card);
+  };
+
   return (
     <>
       <ScrollView style={styles.container}>
         {users.map((u, i) => {
-          return (
-            <Card key={u.name}>
-              <Card.Title>{u.name}</Card.Title>
-              <Card.Divider />
-              <Card.Image
-                style={{ padding: 0 }}
-                source={{
-                  uri: "https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg",
-                }}
-              />
-              <Text style={{ marginBottom: 10 }}>
-                The idea with React Native Elements is more about component
-                structure than actual design.
-              </Text>
-            </Card>
-          );
+          return <Card title={u.name} imageSource={u.avatar} text={"eho"} />;
         })}
         <Button
           icon={
