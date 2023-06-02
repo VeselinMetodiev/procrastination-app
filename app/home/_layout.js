@@ -10,7 +10,7 @@ export default () => {
       }}
     >
       <Tabs.Screen
-        name="feed"
+        name="home"
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome name="home" size={24} color={color} />
@@ -18,10 +18,10 @@ export default () => {
         }}
       />
       <Tabs.Screen
-        name="tasks"
+        name="categories"
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="tasks" size={24} color={color} />
+            <FontAwesome name="th-large" size={24} color={color} />
           ),
         }}
       />
