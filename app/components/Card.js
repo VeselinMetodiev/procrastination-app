@@ -1,49 +1,40 @@
-import React from "react";
-import { View, Image, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Card = ({ title, imageSource, text }) => {
+const Card = ({ title, imageSource, description, onPress }) => {
   return (
-    <View style={styles.cardContainer}>
-      <View style={styles.imageContainer}>
-        <Image
-          source={{ uri: imageSource }}
-          style={styles.image}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.contentContainer}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
+      <View style={styles.card}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.text}>{text}</Text>
+        <Image source={{ uri: imageSource }} style={styles.image} />
+        <Text style={styles.description}>{description}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  cardContainer: {
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    overflow: "hidden",
-    elevation: 3,
-    marginBottom: 16,
+  container: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    padding: 10,
   },
-  imageContainer: {
-    height: 200,
-  },
-  image: {
-    flex: 1,
-  },
-  contentContainer: {
-    padding: 16,
+  card: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 8,
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
-  text: {
+  image: {
+    width: 150,
+    height: 150,
+    marginBottom: 10,
+  },
+  description: {
     fontSize: 16,
-    color: "#777",
   },
 });
 

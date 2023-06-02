@@ -3,7 +3,7 @@ import { View, ScrollView, StyleSheet, Image, Pressable } from "react-native";
 import { Text, Button, Icon } from "@rneui/themed";
 import Card from "./../components/Card";
 
-const users = [
+const categories = [
   {
     name: "Gym",
     avatar: "https://randomuser.me/api/portraits/men/4.jpg",
@@ -42,9 +42,11 @@ function Feed() {
   return (
     <>
       <ScrollView style={styles.container}>
-        {users.map((u, i) => {
-          return <Card title={u.name} imageSource={u.avatar} text={"eho"} />;
-        })}
+        <View style={styles.categoriesContainer}>
+          {categories.map((u, i) => {
+            return <Card title={u.name} imageSource={u.avatar} text={"eho"} />;
+          })}
+        </View>
         <Button
           icon={
             <Icon name="code" color="#ffffff" iconStyle={{ marginRight: 10 }} />
@@ -66,6 +68,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ecf0f1",
+  },
+  categoriesContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly'
   },
   fonts: {
     marginBottom: 8,
