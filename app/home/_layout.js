@@ -7,6 +7,10 @@ export default () => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarActiveTintColor: "pink",
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          fontWeight: 'bold'
+        },
       }}
     >
       <Tabs.Screen
