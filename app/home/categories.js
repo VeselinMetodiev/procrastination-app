@@ -1,7 +1,7 @@
 import React from "react";
 import { View, ScrollView, StyleSheet, Image, Pressable } from "react-native";
 import { Text, Button, Icon } from "@rneui/themed";
-import Card from "../components/Card";
+import Card from "../../components/Card";
 
 const categories = [
   {
