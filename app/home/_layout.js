@@ -7,14 +7,14 @@ export default () => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarActiveTintColor: "pink",
-        headerTitleAlign: 'center',
+        headerTitleAlign: "center",
         headerTitleStyle: {
-          fontWeight: 'bold'
+          fontWeight: "bold",
         },
       }}
     >
       <Tabs.Screen
-        name="home"
+        name="tasks"
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome name="home" size={24} color={color} />

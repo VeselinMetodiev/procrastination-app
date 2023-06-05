@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   TextInput,
@@ -8,18 +8,38 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Home = () => {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([]);
 
-  const handleAddTask = () => {
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const arrayData = await AsyncStorage.getItem("@tasks");
+        const tasks = arrayData ? JSON.parse(arrayData) : [];
+        console.log(tasks);
+        setTaskList(tasks);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  const handleAddTask = async () => {
     if (task) {
       setTaskList([
         ...taskList,
         { id: Date.now(), task: task, completed: false },
       ]);
       setTask("");
+      try {
+        await AsyncStorage.setItem("@tasks", JSON.stringify(taskList));
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
