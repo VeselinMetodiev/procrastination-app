@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   View,
   TextInput,
@@ -9,10 +9,12 @@ import {
   StyleSheet,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Picker } from "@react-native-picker/picker";
 
 const Home = () => {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([]);
+  const [category, setCategory] = useState();
 
   useEffect(() => {
     async function fetchData() {
@@ -59,6 +61,16 @@ const Home = () => {
     </TouchableOpacity>
   );
 
+  const pickerRef = useRef();
+
+  function open() {
+    pickerRef.current.focus();
+  }
+
+  function close() {
+    pickerRef.current.blur();
+  }
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -67,6 +79,14 @@ const Home = () => {
         value={task}
         onChangeText={(text) => setTask(text)}
       />
+      <Picker
+        ref={pickerRef}
+        selectedValue={category}
+        onValueChange={(itemValue, itemIndex) => setCategory(itemValue)}
+      >
+        <Picker.Item label="Java" value="java" />
+        <Picker.Item label="JavaScript" value="js" />
+      </Picker>
       <Button title="Add Task" onPress={handleAddTask} />
       <FlatList
         data={taskList}
