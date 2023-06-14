@@ -70,9 +70,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#ecf0f1",
   },
   categoriesContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-evenly'
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly",
   },
   fonts: {
     marginBottom: 8,
