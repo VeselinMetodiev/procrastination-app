@@ -19,7 +19,6 @@ const Home = () => {
   const [category, setCategory] = useState();
 
   const count = useSelector((state) => state.todos.value);
-  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,7 +37,6 @@ const Home = () => {
 
   const handleAddTask = async () => {
     console.log(count);
-    console.log(state);
     if (task) {
       setTaskList([
         ...taskList,
@@ -102,21 +100,12 @@ const Home = () => {
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.flatListContent}
       />
-      {count}
-      <View style={styles.container}>
-        <Button
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          Increment
-        </Button>
-
-        <Button
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          Decrement
-        </Button>
+      <View style={styles.bContainer}>
+        <Text style={styles.counterText}>Count: {count}</Text>
+        <View style={styles.buttonContainer}>
+          <Button title="+" onPress={() => dispatch(increment())} />
+          <Button title="-" onPress={() => dispatch(decrement())} />
+        </View>
       </View>
     </View>
   );
@@ -163,6 +152,18 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "green",
     marginLeft: 8,
+  },
+  bContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  counterText: {
+    fontSize: 24,
+    marginBottom: 20,
+  },
+  buttonContainer: {
+    flexDirection: "row",
   },
 });
 
