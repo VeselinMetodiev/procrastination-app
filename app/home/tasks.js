@@ -10,11 +10,17 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Picker } from "@react-native-picker/picker";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment } from "../redux/slices/todos";
 
 const Home = () => {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([]);
   const [category, setCategory] = useState();
+
+  const count = useSelector((state) => state.todos.value);
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
@@ -31,6 +37,8 @@ const Home = () => {
   }, []);
 
   const handleAddTask = async () => {
+    console.log(count);
+    console.log(state);
     if (task) {
       setTaskList([
         ...taskList,
@@ -94,6 +102,22 @@ const Home = () => {
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.flatListContent}
       />
+      {count}
+      <View style={styles.container}>
+        <Button
+          aria-label="Increment value"
+          onClick={() => dispatch(increment())}
+        >
+          Increment
+        </Button>
+
+        <Button
+          aria-label="Decrement value"
+          onClick={() => dispatch(decrement())}
+        >
+          Decrement
+        </Button>
+      </View>
     </View>
   );
 };
