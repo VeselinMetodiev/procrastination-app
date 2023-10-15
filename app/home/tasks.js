@@ -19,6 +19,7 @@ const Home = () => {
   const [category, setCategory] = useState();
 
   const count = useSelector((state) => state.todos.value);
+  const categories = useSelector((state) => state.todos.categories);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -90,8 +91,9 @@ const Home = () => {
         selectedValue={category}
         onValueChange={(itemValue, itemIndex) => setCategory(itemValue)}
       >
-        <Picker.Item label="Java" value="java" />
-        <Picker.Item label="JavaScript" value="js" />
+        {categories.map((category, i) => (
+          <Picker.Item key={i} label={category.name} value={category.name} />
+        ))}
       </Picker>
       <Button title="Add Task" onPress={handleAddTask} />
       <FlatList

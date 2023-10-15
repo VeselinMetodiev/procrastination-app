@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { categories } from "../../../constants/categories";
 
 const initialState = {
   value: 0,
+  categories: categories,
 };
 
 export const todos = createSlice({
