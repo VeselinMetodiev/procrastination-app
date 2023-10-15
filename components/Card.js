@@ -2,8 +2,12 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 
 const Card = ({ title, imageSource, onPress }) => {
+  const handleCardPress = (card) => {
+    onPress(title);
+  };
+
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.card}>
         <Image source={{ uri: imageSource }} style={styles.image} />
 
@@ -13,7 +17,7 @@ const Card = ({ title, imageSource, onPress }) => {
           </View>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 

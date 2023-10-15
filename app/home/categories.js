@@ -3,13 +3,15 @@ import { View, ScrollView, StyleSheet, Image, Pressable } from "react-native";
 import { Text, Button, Icon } from "@rneui/themed";
 import Card from "../../components/Card";
 import { useSelector } from "react-redux";
+import { Link } from "expo-router";
 
 function Feed() {
   const categories = useSelector((state) => state.todos.categories);
 
-  const handleCardPress = (card) => {
+  const handleCardPress = (category) => {
     // Handle press event for the card
-    console.log("Pressed card:", card);
+    console.log("card: " + category);
+    () => router.push("[category]");
   };
 
   return (
@@ -18,12 +20,23 @@ function Feed() {
         <View style={styles.categoriesContainer}>
           {categories.map((u, i) => {
             return (
-              <Card
-                key={i}
-                title={u.name}
-                imageSource={u.avatar}
-                text={"eho"}
-              />
+              <Link
+                key={u.name}
+                href={{
+                  pathname: `/${u.name}`,
+                  params: {
+                    category: `${u.name}`,
+                  },
+                }}
+              >
+                <Card
+                  key={i}
+                  title={u.name}
+                  imageSource={u.avatar}
+                  text={"eho"}
+                  onPress={handleCardPress}
+                />
+              </Link>
             );
           })}
         </View>
