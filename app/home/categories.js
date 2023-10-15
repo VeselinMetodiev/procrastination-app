@@ -44,7 +44,14 @@ function Feed() {
       <ScrollView style={styles.container}>
         <View style={styles.categoriesContainer}>
           {categories.map((u, i) => {
-            return <Card title={u.name} imageSource={u.avatar} text={"eho"} />;
+            return (
+              <Card
+                key={i}
+                title={u.name}
+                imageSource={u.avatar}
+                text={"eho"}
+              />
+            );
           })}
         </View>
         <Button
